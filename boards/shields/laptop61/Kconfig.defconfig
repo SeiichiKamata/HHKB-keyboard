@@ -1,0 +1,6 @@
+if SHIELD_LAPTOP61
+
+config ZMK_KEYBOARD_NAME
+    default "Laptop61"
+
+endif

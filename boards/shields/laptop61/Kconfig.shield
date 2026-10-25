@@ -1,0 +1,2 @@
+config SHIELD_LAPTOP61
+    def_bool $(shields_list_contains,laptop61)
