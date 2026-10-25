@@ -1,3 +1,4 @@
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
@@ -35,28 +36,28 @@
 
         fn_layer {
             bindings = <
-                /* 物理1段目：F1〜F12 */
-                &trans &kp F1 &kp F2 &kp F3 &kp F4
-                &kp F5  &kp F6 &kp F7 &kp F8 &kp F9
-                &kp F10 &kp F11 &kp F12 &trans &trans
+                /* 物理1段目：Esc=Power、数字列=F1〜F12 */
+                &kp K_POWER &kp F1 &kp F2 &kp F3 &kp F4
+                &kp F5 &kp F6 &kp F7 &kp F8 &kp F9
+                &kp F10 &kp F11 &kp F12 &kp INS &kp DEL
 
                 /* 物理2段目 */
-                &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans
+                &kp CAPS &trans &trans &trans &trans
+                &trans &trans &trans &kp PSCRN &kp SLCK
+                &kp PAUS &kp UP &trans &kp BSPC
 
-                /* 物理3段目：HJKLでカーソル移動 */
-                &trans &trans &trans &trans &trans
-                &trans &trans &kp LEFT &kp DOWN &kp UP
-                &kp RIGHT &trans &trans
+                /* 物理3段目 */
+                &trans &kp K_VOL_DN &kp K_VOL_UP &kp K_MUTE &kp K_EJECT
+                &trans &kp KP_MULTIPLY &kp KP_DIVIDE &kp HOME &kp PG_UP
+                &kp LEFT &kp RIGHT &kp KP_ENTER
 
                 /* 物理4段目 */
                 &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans
-                &trans &trans &trans
+                &trans &kp KP_PLUS &kp KP_MINUS &kp END &kp PG_DN
+                &kp DOWN &trans &trans
 
-                /* 物理5段目 */
-                &trans &trans &trans &trans &trans &trans
+                /* 物理5段目：右Command=Stop */
+                &trans &trans &trans &trans &kp K_STOP &trans
             >;
         };
     };
