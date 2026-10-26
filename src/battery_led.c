@@ -10,6 +10,7 @@
  * - LED off during sleep
  */
 #include <zephyr/kernel.h>
+#include <zmk/battery.h>
 
 static int battery_led_init(void)
 {
