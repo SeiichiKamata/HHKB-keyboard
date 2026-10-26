@@ -98,6 +98,7 @@ nfct-pins-as-gpios;
             gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
         };
     };
+};
 
 &gpio0 {
     battery_read_enable: battery_read_enable {
@@ -106,5 +107,4 @@ nfct-pins-as-gpios;
         output-low;
         line-name = "battery-read-enable";
     };
-};
 };
