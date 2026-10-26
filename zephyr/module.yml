@@ -1,4 +1,5 @@
 name: zmk-keyboard-laptop61
 build:
+  cmake: .
   settings:
     board_root: .
