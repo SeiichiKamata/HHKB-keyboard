@@ -18,6 +18,15 @@
 #define LED_GREEN_NODE DT_ALIAS(led_green)
 #define LED_BLUE_NODE DT_ALIAS(led_blue)
 
+static const struct gpio_dt_spec led_red =
+    GPIO_DT_SPEC_GET(LED_RED_NODE, gpios);
+
+static const struct gpio_dt_spec led_green =
+    GPIO_DT_SPEC_GET(LED_GREEN_NODE, gpios);
+
+static const struct gpio_dt_spec led_blue =
+    GPIO_DT_SPEC_GET(LED_BLUE_NODE, gpios);
+
 enum battery_led_color {
     BATTERY_LED_RED,
     BATTERY_LED_YELLOW,
