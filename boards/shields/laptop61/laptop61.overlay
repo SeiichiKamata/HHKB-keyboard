@@ -88,19 +88,18 @@ nfct-pins-as-gpios;
         status = "okay";
 
         led_red: led_red {
-            gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
         };
 
         led_green: led_green {
-            gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
         };
 
         led_blue: led_blue {
-            gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
         };
     };
-};
-
+  
 / {
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
