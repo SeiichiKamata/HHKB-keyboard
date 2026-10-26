@@ -14,6 +14,10 @@
 
 static int battery_led_init(void)
 {
+    uint8_t battery_level = zmk_battery_state_of_charge();
+
+    ARG_UNUSED(battery_level);
+
     return 0;
 }
 
