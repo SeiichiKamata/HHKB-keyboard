@@ -46,6 +46,41 @@ static enum battery_led_color get_battery_color(uint8_t level)
     return BATTERY_LED_RED;
 }
 
+static int set_battery_led_color(enum battery_led_color color)
+{
+    bool red_on = false;
+    bool green_on = false;
+
+    switch (color) {
+    case BATTERY_LED_GREEN:
+        green_on = true;
+        break;
+
+    case BATTERY_LED_YELLOW:
+        red_on = true;
+        green_on = true;
+        break;
+
+    case BATTERY_LED_RED:
+        red_on = true;
+        break;
+
+    default:
+        return -EINVAL;
+    }
+
+    int ret = gpio_pin_set_dt(&led_red, red_on);
+    if (ret < 0) {
+        return ret;
+    }
+
+    ret = gpio_pin_set_dt(&led_green, green_on);
+    if (ret < 0) {
+        return ret;
+    }
+
+    return gpio_pin_set_dt(&led_blue, 0);
+}
 
 static int battery_led_init(void)
 {
@@ -77,7 +112,7 @@ static int battery_led_init(void)
 
     ARG_UNUSED(color);
 
-    return 0;
+    return set_battery_led_color(color);
 }
 
 SYS_INIT(battery_led_init, APPLICATION, 90);
