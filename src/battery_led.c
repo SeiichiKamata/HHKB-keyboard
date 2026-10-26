@@ -13,6 +13,7 @@
 #include <zmk/battery.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zmk/events/battery_state_changed.h>
 
 #define LED_RED_NODE DT_ALIAS(led_red)
 #define LED_GREEN_NODE DT_ALIAS(led_green)
