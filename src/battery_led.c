@@ -46,10 +46,33 @@ static enum battery_led_color get_battery_color(uint8_t level)
     return BATTERY_LED_RED;
 }
 
+
 static int battery_led_init(void)
 {
-    uint8_t battery_level = zmk_battery_state_of_charge();
+    if (!gpio_is_ready_dt(&led_red) ||
+        !gpio_is_ready_dt(&led_green) ||
+        !gpio_is_ready_dt(&led_blue)) {
+        return -ENODEV;
+    }
 
+    int ret;
+
+    ret = gpio_pin_configure_dt(&led_red, GPIO_OUTPUT_INACTIVE);
+    if (ret < 0) {
+        return ret;
+    }
+
+    ret = gpio_pin_configure_dt(&led_green, GPIO_OUTPUT_INACTIVE);
+    if (ret < 0) {
+        return ret;
+    }
+
+    ret = gpio_pin_configure_dt(&led_blue, GPIO_OUTPUT_INACTIVE);
+    if (ret < 0) {
+        return ret;
+    }
+
+    uint8_t battery_level = zmk_battery_state_of_charge();
     enum battery_led_color color = get_battery_color(battery_level);
 
     ARG_UNUSED(color);
