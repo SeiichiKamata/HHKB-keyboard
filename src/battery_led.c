@@ -14,6 +14,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 #include <zmk/events/battery_state_changed.h>
+#include <zmk/event_manager.h>
 
 #define LED_RED_NODE DT_ALIAS(led_red)
 #define LED_GREEN_NODE DT_ALIAS(led_green)
@@ -117,3 +118,20 @@ static int battery_led_init(void)
 }
 
 SYS_INIT(battery_led_init, APPLICATION, 90);
+
+
+static int battery_led_event_listener(const zmk_event_t *eh)
+{
+    if (as_zmk_battery_state_changed(eh) != NULL) {
+        uint8_t level = zmk_battery_state_of_charge();
+        enum battery_led_color color = get_battery_color(level);
+
+        return set_battery_led_color(color);
+    }
+
+    return ZMK_EV_EVENT_BUBBLE;
+}
+
+ZMK_LISTENER(battery_led, battery_led_event_listener);
+ZMK_SUBSCRIPTION(battery_led, zmk_battery_state_changed);
+
