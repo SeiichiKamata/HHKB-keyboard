@@ -75,4 +75,27 @@ nfct-pins-as-gpios;
         kscan = <&kscan0>;
         transform = <&default_transform>;
     };
+
+    aliases {
+        led-red = &led_red;
+        led-green = &led_green;
+        led-blue = &led_blue;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+
+        led_red: led_red {
+            gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+        };
+
+        led_green: led_green {
+            gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+        };
+
+        led_blue: led_blue {
+            gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+        };
+    };
 };
