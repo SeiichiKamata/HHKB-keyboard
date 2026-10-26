@@ -99,7 +99,8 @@ nfct-pins-as-gpios;
             gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
         };
     };
-  
+ };
+
 / {
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
@@ -108,7 +109,7 @@ nfct-pins-as-gpios;
         output-ohms = <510000>;
         full-ohms = <1510000>;
     };
-};
+  };
 
 &adc {
     #address-cells = <1>;
