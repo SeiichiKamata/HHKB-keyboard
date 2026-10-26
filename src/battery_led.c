@@ -11,6 +11,12 @@
  */
 #include <zephyr/kernel.h>
 #include <zmk/battery.h>
+#include <zephyr/device.h>
+#include <zephyr/drivers/gpio.h>
+
+#define LED_RED_NODE DT_ALIAS(led_red)
+#define LED_GREEN_NODE DT_ALIAS(led_green)
+#define LED_BLUE_NODE DT_ALIAS(led_blue)
 
 enum battery_led_color {
     BATTERY_LED_RED,
