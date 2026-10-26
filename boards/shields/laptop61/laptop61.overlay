@@ -107,3 +107,4 @@ nfct-pins-as-gpios;
         line-name = "battery-read-enable";
     };
 };
+};
