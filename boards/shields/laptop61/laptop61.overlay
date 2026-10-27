@@ -1,5 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
 
 &uicr {
 nfct-pins-as-gpios;
@@ -122,5 +123,25 @@ nfct-pins-as-gpios;
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
         zephyr,input-positive = <NRF_SAADC_AIN7>;
         zephyr,resolution = <12>;
+    };
+};
+
+
+&pinctrl {
+    pwm0_default: pwm0_default {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 26)>,
+                    <NRF_PSEL(PWM_OUT1, 0, 30)>,
+                    <NRF_PSEL(PWM_OUT2, 0, 6)>;
+        };
+    };
+
+    pwm0_sleep: pwm0_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 26)>,
+                    <NRF_PSEL(PWM_OUT1, 0, 30)>,
+                    <NRF_PSEL(PWM_OUT2, 0, 6)>;
+            low-power-enable;
+        };
     };
 };
