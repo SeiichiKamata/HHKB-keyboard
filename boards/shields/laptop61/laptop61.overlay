@@ -1,6 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+#include <zephyr/dt-bindings/pwm/pwm.h>
 
 &uicr {
 nfct-pins-as-gpios;
@@ -152,4 +153,23 @@ nfct-pins-as-gpios;
     pinctrl-1 = <&pwm0_sleep>;
     pinctrl-names = "default", "sleep";
     status = "disabled";
+};
+
+/ {
+    pwm_leds {
+        compatible = "pwm-leds";
+        status = "disabled";
+
+        pwm_led_red: pwm_led_red {
+            pwms = <&pwm0 0 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+        };
+
+        pwm_led_green: pwm_led_green {
+            pwms = <&pwm0 1 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+        };
+
+        pwm_led_blue: pwm_led_blue {
+            pwms = <&pwm0 2 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+        };
+    };
 };
