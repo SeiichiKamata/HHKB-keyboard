@@ -15,6 +15,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zmk/events/battery_state_changed.h>
 #include <zmk/event_manager.h>
+#include <zephyr/drivers/pwm.h>
 
 #define LED_RED_NODE DT_ALIAS(led_red)
 #define LED_GREEN_NODE DT_ALIAS(led_green)
