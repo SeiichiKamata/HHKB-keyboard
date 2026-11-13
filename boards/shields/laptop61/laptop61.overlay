@@ -85,6 +85,8 @@ nfct-pins-as-gpios;
         led-blue = &led_blue;
     };
 
+    /* XIAO onboard RGB remains active-LOW; the separate external CC RGB LED
+     * uses the same pins with active-HIGH PWM below. */
     leds {
         compatible = "gpio-leds";
         status = "okay";
@@ -152,24 +154,26 @@ nfct-pins-as-gpios;
     pinctrl-0 = <&pwm0_default>;
     pinctrl-1 = <&pwm0_sleep>;
     pinctrl-names = "default", "sleep";
-    status = "disabled";
+    status = "okay";
 };
 
 / {
+    /* Custom channel specs for the external common-cathode RGB LED.
+     * The generic pwm-leds device stays disabled; our C module owns pwm0. */
     pwm_leds {
         compatible = "pwm-leds";
         status = "disabled";
 
         pwm_led_red: pwm_led_red {
-            pwms = <&pwm0 0 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+            pwms = <&pwm0 0 PWM_NSEC(1000000) PWM_POLARITY_NORMAL>;
         };
 
         pwm_led_green: pwm_led_green {
-            pwms = <&pwm0 1 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+            pwms = <&pwm0 1 PWM_NSEC(1000000) PWM_POLARITY_NORMAL>;
         };
 
         pwm_led_blue: pwm_led_blue {
-            pwms = <&pwm0 2 PWM_NSEC(1000000) PWM_POLARITY_INVERTED>;
+            pwms = <&pwm0 2 PWM_NSEC(1000000) PWM_POLARITY_NORMAL>;
         };
     };
 };

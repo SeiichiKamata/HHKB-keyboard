@@ -1,0 +1,8 @@
+# HHKB external USB-power RGB indicator
+config HHKB_USB_LED
+    bool "HHKB USB-power RGB LED indicator"
+    depends on PWM
+    default y
+    help
+      Controls the external common-cathode RGB LED according to
+      nRF52840 USB VBUS presence, using PWM at 21% brightness.
