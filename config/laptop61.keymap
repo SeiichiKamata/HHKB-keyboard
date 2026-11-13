@@ -16,7 +16,7 @@
                 /* 物理2段目：14キー */
                 &kp TAB  &kp Q  &kp W  &kp E  &kp R
                 &kp T    &kp Y  &kp U  &kp I  &kp O
-                &kp P    &kp LBKT &kp RBKT &kp DEL
+                &kp P    &kp LBKT &kp RBKT &kp BSPC
 
                 /* 物理3段目：13キー */
                 &kp LCTRL &kp A &kp S &kp D &kp F
@@ -44,7 +44,7 @@
                 /* 物理2段目 */
                 &kp CAPS &trans &trans &trans &trans
                 &trans &trans &trans &kp PSCRN &kp SLCK
-                &kp PAUS &kp UP &trans &kp BSPC
+                &kp PAUS &kp UP &trans &trans
 
                 /* 物理3段目 */
                 &trans &kp K_VOL_DN &kp K_VOL_UP &kp K_MUTE &kp K_EJECT
