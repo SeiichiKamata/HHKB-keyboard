@@ -1,15 +1,15 @@
 /*
  * HHKB-keyboard USB-power indicator for the XIAO nRF52840 Plus.
  *
- * External RGB LED (common cathode, active HIGH):
- *   P0.26 = red, P0.30 = green, P0.06 = blue.
+ * External RGB LED (common cathode, active HIGH), actual PCB wiring:
+ *   D17 / P1.03 = red, D18 / P1.05 = green, D19 / P1.07 = blue.
  *
- * VBUS absent: white (RGB 21% PWM each).
+ * VBUS absent: blue (B 21% PWM).
  * VBUS present: green (G 21% PWM), INCLUDING when charging is complete.
  * ZMK deep sleep: LED off. When awake, check VBUS once a second.
  *
- * NOTE: The XIAO's onboard RGB LED uses these same GPIO pins, but is
- * active LOW. It will therefore behave inversely to the external LED.
+ * NOTE: The XIAO onboard RGB LED uses P0.26/P0.30/P0.06 and is not
+ * controlled by this module. The external LED uses separate GPIO pins.
  */
 
 #include <errno.h>
@@ -77,7 +77,7 @@ static int update_led(void)
         return set_led(false, true, false); /* USB connected: green */
     }
 
-    return set_led(true, true, true); /* Battery power: white */
+    return set_led(false, false, true); /* USB disconnected: blue */
 }
 
 static void usb_led_work_handler(struct k_work *work);
